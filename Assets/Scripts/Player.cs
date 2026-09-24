@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public float xBorderLimit = 9f;
+    public float yBorderLimit = 5f;
     public float thrustForce = 100f;
     public float rotationSpeed = 120f;
 
     public GameObject gun, bulletPrefab;
 
     private Rigidbody _rigid;
+    public static int SCORE  = 0;
 
     void Start()
     {
@@ -16,6 +20,24 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Vector3 newPos = transform.position;
+        if (newPos.x > xBorderLimit)
+        {
+            newPos.x = -xBorderLimit + 1;
+        }
+        else if (newPos.x < -xBorderLimit)
+        {
+            newPos.x = xBorderLimit - 1;
+        }
+        if (newPos.y > yBorderLimit)
+        {
+            newPos.y = -yBorderLimit + 1;
+        }
+        else if (newPos.y < -yBorderLimit)
+        {
+            newPos.y = yBorderLimit - 1;
+        }
+        transform.position = newPos;
 
         float rotation = Input.GetAxis("Rotate") * Time.deltaTime;
         float thrust = Input.GetAxis("Thrust") * Time.deltaTime;
@@ -33,5 +55,18 @@ public class Player : MonoBehaviour
             balaScript.targetVector = transform.right;
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+    if (collision.gameObject.CompareTag("Enemy"))
+        {
+            SCORE = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    else
+        {
+            Debug.Log(message:"He colisionado con otra cosa");
+        }
     }
 }
