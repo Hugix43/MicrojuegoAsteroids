@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8982530826550775044}
   - component: {fileID: 4869293381067052921}
   - component: {fileID: -8186257526976987631}
+  - component: {fileID: 8341519039361631976}
   m_Layer: 0
   m_Name: Meteor_0
   m_TagString: Enemy
@@ -144,3 +145,19 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: -1.9999999, z: -0.08220816}
+--- !u!114 &8341519039361631976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876488465727109208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf46c2e7a404685469166ffc2db88a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroids
+  isFragment: 0
+  fragmentScale: 0.5
+  fragmentSpeed: 4
+  separationAngle: 60

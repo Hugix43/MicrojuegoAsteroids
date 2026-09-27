@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float yBorderLimit = 5f;
     public float thrustForce = 100f;
     public float rotationSpeed = 120f;
+    public BulletPool bulletPool;
 
     public GameObject gun, bulletPrefab;
 
@@ -50,23 +51,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
-            Bullet balaScript = bullet.GetComponent<Bullet>();
-            balaScript.targetVector = transform.right;
+            bulletPool.GetBullet(gun.transform.position, transform.right);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-    if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            SCORE = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    else
-        {
-            Debug.Log(message:"He colisionado con otra cosa");
         }
     }
 }

@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 5
-  maxLifetime: 3
+  maxLifetime: 2
   targetVector: {x: 1, y: 0, z: 0}
 --- !u!65 &6736274321591486154
 BoxCollider:
